@@ -11,7 +11,7 @@ namespace Lesson_1_HW
             Console.WriteLine("Greetings, Stranger! What's your name?");
             string name = Console.ReadLine();
 
-            Console.WriteLine($"Hi, {name!}. Today is {DateTime.Now.ToString("D")}");
+            Console.WriteLine($"Hi, {name}!. Today is {DateTime.Now.ToString("D")}");
             Console.ReadKey();
         }
     }
