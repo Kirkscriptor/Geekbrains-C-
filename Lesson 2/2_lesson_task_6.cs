@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Text;
 
 namespace Lesson_2
@@ -12,21 +12,40 @@ namespace Lesson_2
             System.Console.InputEncoding = Encoding.GetEncoding(1251);
 
 
-            // -------Начало задания 7.
+            // -------Начало задания 6.
 
+            int[] Office = { 0b110011, 0b111010, 0b111111, 0b100000 };
 
-            Console.Write("Введите cлово, которое нужно инвертировать\n");
-            string ToInvert = Console.ReadLine();
-            char[] charbreak = ToInvert.ToCharArray();
+            Console.WriteLine("Пожалуйста, укажите, в какой день недели вы хотите прийти в отделение банка. Укажите порядковый номер дня\n 1 - Понедельник \n 2 - Вторник \n 3 - Среда \n 4 - Четверг \n 5 - Пятница \n 6 - Суббота \n 7 - Воскресенье");
+            string GetDay = Console.ReadLine();
+            int maskCheck = Integertest(GetDay);
 
-            for (int Counter = charbreak.Length - 1; Counter >= 0; Counter--)
+            while (maskCheck < 1 || maskCheck > 7)
             {
-
-                Console.Write(charbreak[Counter]);
+                Console.WriteLine("В неделе всего 7 дней. Введите число от 1 до 7");
+                GetDay = Console.ReadLine();
+                maskCheck = Integertest(GetDay);
             }
 
+            maskCheck = 0b_100000 >> (maskCheck - 1);
 
-            // -------Завершение задания 7.
+            Console.WriteLine("");
+            int i = 0;
+
+            while (i < Office.Length)
+            {
+
+                if (maskCheck == (maskCheck & Office[i]))
+                {
+                    Console.WriteLine($"офис # {i + 1}");
+                }
+
+                i++;
+            }
+
+            Console.WriteLine("\n--------------------------------\n\n\n");
+
+            // -------Завершение задания 6.
 
 
 
